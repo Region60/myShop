@@ -9,19 +9,19 @@ CREATE TABLE IF NOT EXISTS users (
     "confirmRegister" VARCHAR(20)
 );
 
-CREATE TABLE IF NOT EXISTS projects (
+CREATE TABLE IF NOT EXISTS product (
+    id SERIAL PRIMARY KEY,
+    "nameProduct" VARCHAR(100) NOT NULL,
+    price  INT NOT NULL,
+    quantity INT NOT NULL,
+    photoProduct VARCHAR(200) NOT NULL
+
+);
+
+CREATE TABLE IF NOT EXISTS order (
     id SERIAL PRIMARY KEY,
     "createDate" TIMESTAMP DEFAULT now() NOT NULL,
     "creatorId" INT NOT NULL,
-    title VARCHAR(50) NOT NULL,
-    photo VARCHAR(200) NOT NULL,
-    "pricePlan" VARCHAR(50),
-    rating INT NOT NULL DEFAULT 1
 );
 
-CREATE TABLE IF NOT EXISTS users_projects_projects (
-    "usersId" INT NOT NULL,
-    "projectsId" INT NOT NULL,
-    FOREIGN KEY ("usersId") REFERENCES users (id) ON DELETE CASCADE,
-    FOREIGN KEY ("projectsId") REFERENCES projects (id) ON DELETE CASCADE
-);
+

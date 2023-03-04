@@ -6,8 +6,9 @@ import {
   CreateDateColumn,
   ManyToMany,
   JoinTable,
+  OneToMany,
 } from 'typeorm';
-import { Project } from 'src/project/entities/project.entity';
+import { Order } from 'src/order/entities/order.entity';
 import { Role } from '../../roles/role.enum';
 
 @Entity('users')
@@ -37,7 +38,7 @@ export class User {
   @Column({ default: null })
   confirmRegister: string;
 
-  @ManyToMany(() => Project, (project)=>project.users)
+  @OneToMany(() => Order, (order)=>order.user)
   @JoinTable()
-  projects: Project[];
+  orders: Order[];
 }
