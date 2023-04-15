@@ -3,7 +3,7 @@ services:
   back:
     container_name: back
     build:
-      context: .
+      context: ./server
       target: development
     depends_on:
       - "db"
@@ -11,7 +11,7 @@ services:
       - "5000:8080"
     command: npm run start:dev
     volumes:
-      - .:/app
+      - ./server:/app
       - /app/node_modules
     networks:
       - postgres
@@ -51,7 +51,15 @@ services:
       - db
       - back   
     networks:
-      - postgres 
+      - postgres
+
+  client:
+    container_name: client
+    build:
+      context: ./client
+    image: client
+    ports:
+      - '3001:3000'
 
 networks:
   postgres:
