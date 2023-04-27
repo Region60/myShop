@@ -1,4 +1,4 @@
-import { Order } from 'src/order/entities/order.entity';
+import { Order } from 'src/orders/entities/order.entity';
 import { Role } from '../../roles/role.enum';
 export declare class User {
     id: number;

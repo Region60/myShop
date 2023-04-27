@@ -26,6 +26,7 @@ let ProductService = class ProductService {
         return await this.productRepository.update(productId, Object.assign({}, updateProductDto));
     }
     async findOneById(id) {
+        console.log(id);
         return await this.productRepository.findOneBy({
             id,
         });

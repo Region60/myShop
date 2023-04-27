@@ -29,10 +29,16 @@ let ProductController = class ProductController {
         return await this.productService.update(updateProductDto, +productId);
     }
     async get(id) {
-        return await this.productService.findOneById(+id);
+        console.log(">>>>>>> product GET_ONE <<<<<<<<");
+        const response = await this.productService.findOneById(+id);
+        console.log(response);
+        return response;
     }
-    async getAll(count, page) {
-        return await this.productService.getAll(+page, +count);
+    async getAll(param) {
+        console.log(">>>>>>> product GET_ALL <<<<<<<<");
+        const response = await this.productService.getAll(+param.page, +param.count);
+        console.log(response);
+        return response;
     }
 };
 __decorate([
@@ -55,17 +61,17 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ProductController.prototype, "patch", null);
 __decorate([
-    (0, common_1.Get)(),
-    __param(0, (0, common_1.Param)()),
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], ProductController.prototype, "get", null);
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)(':count/:page'),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], ProductController.prototype, "getAll", null);
 ProductController = __decorate([

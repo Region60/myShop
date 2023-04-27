@@ -20,7 +20,7 @@ export declare class UsersService {
         roles: Role;
         registerDate: Date;
         confirmRegister: string;
-        orders: import("../order/entities/order.entity").Order[];
+        orders: import("../orders/entities/order.entity").Order[];
     }>;
     findOneByEmail(email: string): Promise<User>;
     confirmRegister(confirmRegister: string): Promise<import("typeorm").UpdateResult>;

@@ -1,9 +1,9 @@
-import { Order } from 'src/order/entities/order.entity';
+import { Order } from 'src/orders/entities/order.entity';
 import { Photo } from 'src/photo/entities/photo.entity';
 export declare class Product {
     id: number;
     nameProduct: string;
-    description: string;
+    descriptionProduct: string;
     price: number;
     quantity: number;
     photoProduct: string;

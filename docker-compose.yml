@@ -5,7 +5,7 @@ services:
     build:
       context: ./server
       target: development
-    depends_on:
+    depends_on: 
       - "db"
     ports:
       - "5000:8080"
@@ -15,6 +15,25 @@ services:
       - /app/node_modules
     networks:
       - postgres
+
+  client:
+    container_name: client
+    build:
+       context: ./client
+       target: builder
+    depends_on:
+      - "back"
+    command: npm run dev
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+    networks:
+      - postgres
+
 
   db:
     container_name: db
@@ -46,21 +65,13 @@ services:
     image: flyway/flyway
     command: -url=jdbc:postgresql://db:5432/test -user=user01 -password=qwertyui -connectRetries=60 migrate
     volumes:
-      - /home/maks/my_project/newFolder/TEST/my_forest/migration:/flyway/sql
+      - /home/maximkotov1986/my_shop:/flyway/sql
     depends_on:
       - db
       - back   
     networks:
       - postgres
-
-  client:
-    container_name: client
-    build:
-      context: ./client
-    image: client
-    ports:
-      - '3001:3000'
-
+ 
 networks:
   postgres:
     driver: bridge

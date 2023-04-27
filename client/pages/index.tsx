@@ -6,8 +6,7 @@ const  Home: React.FC =()=> {
   return (
     <div>
         <MainLayout>
-        </MainLayout>
-        
+        </MainLayout>        
     </div>
     
   )

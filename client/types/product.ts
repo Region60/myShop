@@ -2,7 +2,7 @@
 export default interface IProduct {
 id: number
 nameProduct: string
-description: string
+descriptionProduct: string
 price:number
 quantity:number
 photoProduct:string

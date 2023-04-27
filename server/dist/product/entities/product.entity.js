@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Product = void 0;
 const typeorm_1 = require("typeorm");
-const order_entity_1 = require("../../order/entities/order.entity");
+const order_entity_1 = require("../../orders/entities/order.entity");
 const photo_entity_1 = require("../../photo/entities/photo.entity");
 let Product = class Product {
 };
@@ -26,7 +26,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ length: 500 }),
     __metadata("design:type", String)
-], Product.prototype, "description", void 0);
+], Product.prototype, "descriptionProduct", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)

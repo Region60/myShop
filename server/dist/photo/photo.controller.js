@@ -18,6 +18,7 @@ const photo_service_1 = require("./photo.service");
 const swagger_1 = require("@nestjs/swagger");
 const create_photo_dto_1 = require("./dto/create-photo.dto");
 const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
+const platform_express_1 = require("@nestjs/platform-express");
 let PhotoController = class PhotoController {
     constructor(photoService) {
         this.photoService = photoService;
@@ -39,6 +40,9 @@ __decorate([
         description: 'The record has been successfully created.',
     }),
     (0, common_1.Post)(),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileFieldsInterceptor)([
+        { name: 'photo', maxCount: 3 }
+    ])),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_photo_dto_1.CreatePhotoDto]),

@@ -1,6 +1,7 @@
 import React from 'react'
-import { Card } from '@mui/material'
-import IProduct from '../../common/types/product'
+import { Card, CardMedia, CardContent, Typography, CardActions, Button } from '@mui/material'
+import IProduct from '../types/product'
+import 'tailwindcss/tailwind.css'
 
 interface ProductProps {
     product:IProduct 
@@ -9,11 +10,27 @@ interface ProductProps {
 const Product: React.FC<ProductProps> = ({product}) =>{
 return(
     <>
-    <Card  className="m-3">
-<div>{product.nameProduct}</div>
-<div>{product.description}</div>
-<div>{product.photoProduct}</div>
-<div>{product.price}</div>
+    <Card className='m-4'>
+<CardMedia
+        sx={{ height: 170 }}
+        image={product.photoProduct}
+        title={product.nameProduct}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {product.nameProduct}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        {product.descriptionProduct}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        {product.price}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Купить</Button>
+        <Button size="small">Добавить в избранное</Button>
+      </CardActions>
         
     </Card>
     </>

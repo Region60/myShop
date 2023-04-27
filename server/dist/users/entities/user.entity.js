@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const typeorm_1 = require("typeorm");
-const order_entity_1 = require("../../order/entities/order.entity");
+const order_entity_1 = require("../../orders/entities/order.entity");
 const role_enum_1 = require("../../roles/role.enum");
 let User = class User {
 };

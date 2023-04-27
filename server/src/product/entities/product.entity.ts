@@ -4,7 +4,7 @@ import {
     PrimaryGeneratedColumn,
     ManyToMany,
   } from 'typeorm';
-import { Order } from 'src/order/entities/order.entity';
+import { Order } from 'src/orders/entities/order.entity';
 import { Photo } from 'src/photo/entities/photo.entity';
   
   @Entity('product')
@@ -16,7 +16,7 @@ import { Photo } from 'src/photo/entities/photo.entity';
     nameProduct: string; 
 
     @Column({ length: 500 })
-    description: string;
+    descriptionProduct: string;
     
     @Column()
     price: number;

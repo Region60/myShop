@@ -30,14 +30,20 @@ export class ProductController {
     return await this.productService.update(updateProductDto, +productId);
   }
 
-  @Get()
-  async get(@Param() id:string) {
-    return await this.productService.findOneById(+id)
+  @Get(':id')
+  async get(@Param('id') id) {
+    console.log(">>>>>>> product GET_ONE <<<<<<<<")    
+    const response = await this.productService.findOneById(+id)
+    console.log(response)
+    return response
   }
+  @Get(':count/:page')
+  async getAll(@Param() param) {
+    console.log(">>>>>>> product GET_ALL <<<<<<<<")  
 
-  @Get()
-  async getAll(@Param() count:string, page:string) {
-    return await this.productService.getAll(+page, +count)
+    const response = await this.productService.getAll(+param.page, +param.count)
+    console.log(response)
+    return response
   }
 
 }

@@ -22,6 +22,7 @@ export class ProductService {
   }
 
   async findOneById(id: number) {
+    console.log(id)
     return await this.productRepository.findOneBy({
       id,
     });

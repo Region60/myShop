@@ -5,7 +5,7 @@ import { Button, Grid, TextField } from '@mui/material'
 import FileUpload from '../../components/FileUpload'
 import { useInput } from '../../hooks/useInput'
 import axios from 'axios'
-import endpoints from '../../../common/endpoints'
+import endpoints from '../../constants/endpoints'
 import {  useRouter } from 'next/router'
 
 const  CreateProduct: React.FC =()=> {

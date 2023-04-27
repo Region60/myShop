@@ -1,4 +1,4 @@
-import IProduct from "../../common/types/product";
+import IProduct from "./product";
 
 export interface CatalogState {
 products: IProduct [] 
