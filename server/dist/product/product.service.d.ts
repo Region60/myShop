@@ -8,5 +8,8 @@ export declare class ProductService {
     create(createProductDto: CreateProductDto): Promise<import("typeorm").InsertResult>;
     update(updateProductDto: UpdateProductDto, productId: number): Promise<import("typeorm").UpdateResult>;
     findOneById(id: number): Promise<Product>;
-    getAll(page: number, count: number): Promise<Product[]>;
+    getAll(page: number, count: number): Promise<{
+        products: Product[];
+        quantityProduct: number;
+    }>;
 }

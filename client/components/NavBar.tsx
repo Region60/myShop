@@ -16,7 +16,7 @@ import { useRouter } from 'next/router';
 
 const pages = [
     {text:'Каталог',href:'/products'},
-     {text: 'Контакты', href: '/contacts'} ];
+    {text: 'Контакты', href: '/contacts'} ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);

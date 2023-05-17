@@ -4,15 +4,15 @@ import { Grid, Card, Button, Box } from '@mui/material'
 import { useRouter } from 'next/router'
 import Catalog from '../../components/Catalog'
 import { useTypeSelector } from '../../hooks/useTypeSelector'
-import { wrapper, NextDispatchThunk } from '../../store'
+import { wrapper} from '../../store'
 import { loadProduct } from '../../store/actions-creators/catalog'
-import { GetServerSidePropsResult } from 'next'
 import 'tailwindcss/tailwind.css'
 
 
 const Products = ()=> {
     const router = useRouter()
-    const {products, error} = useTypeSelector(state=> state.catalog)
+    const {quantityProductForPage,quantityProduct, products, error} = useTypeSelector(state=> state.catalog)
+    console.log('rendering page')
 
     if (error) {
         return <MainLayout>
@@ -25,11 +25,12 @@ const Products = ()=> {
     return(
         <>
         <MainLayout>
+            <h3>Количество продуктов {quantityProduct}</h3>
             <Grid container justifyContent='center' className='m-4'>
                 <Card style={{width:900}}>
                      <Box p={3}>
                         <Grid container justifyContent='space-between'>
-                           <Catalog products={products} />
+                           <Catalog products={products} quantityProduct={quantityProduct} quantityProductForPage={quantityProductForPage} />
                            <Button onClick={()=> router.push('/products/create')}>
                               Загрузить
                            </Button>
@@ -46,12 +47,9 @@ const Products = ()=> {
 export default Products
 
 export const getServerSideProps = wrapper.getServerSideProps( store => async ({req, res, ...etc}) => {
-    //const dispatch = store.dispatch()
+    console.log('>>>>>>>>>>>getServerSideProps')
+    console.log (etc)
+    console.log('>>>>>>>>>>>getServerSideProps')
     await store.dispatch(await loadProduct())
   });
 
-
-// export const getServerSideProps = wrapper.getServerSideProps(async ({store}) => {
-// const dispatch = store.dispatch as NextDispatchThunk 
-// await dispatch(await loadProduct())
-// })

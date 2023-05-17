@@ -1,7 +1,9 @@
 import IProduct from "./product";
 
 export interface CatalogState {
-products: IProduct [] 
+products: IProduct []
+quantityProduct: number
+quantityProductForPage: number
 error: string | undefined
 }
 
@@ -10,9 +12,14 @@ export enum CatalogActionType {
     FETCH_PRODUCT_ERROR = "FETCH_PRODUCT_ERROR"
 }
 
+type CatalogPayload = {
+    products: IProduct [],
+    quantityProduct: number
+}
+
  interface FetchCatalaogAction {
     type: CatalogActionType.FETCH_PRODUCT
-    payload:IProduct [] 
+    payload: CatalogPayload
 }
 
  interface FetchCatalaogErrorAction {

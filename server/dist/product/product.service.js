@@ -32,10 +32,11 @@ let ProductService = class ProductService {
         });
     }
     async getAll(page, count) {
-        return await this.productRepository.find({
+        const [products, quantityProduct] = await this.productRepository.findAndCount({
             skip: count * page - count,
             take: count,
         });
+        return { products, quantityProduct };
     }
 };
 ProductService = __decorate([

@@ -12,7 +12,7 @@ return(
     <>
     <Card className='m-4'>
 <CardMedia
-        sx={{ height: 170 }}
+        sx={{ height: 180 }}
         image={product.photoProduct}
         title={product.nameProduct}
       />

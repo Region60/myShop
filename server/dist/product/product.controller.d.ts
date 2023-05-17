@@ -7,5 +7,8 @@ export declare class ProductController {
     create(createProductDto: CreateProductDto): Promise<import("typeorm").InsertResult>;
     patch(updateProductDto: UpdateProductDto, productId: string): Promise<import("typeorm").UpdateResult>;
     get(id: any): Promise<import("./entities/product.entity").Product>;
-    getAll(param: any): Promise<import("./entities/product.entity").Product[]>;
+    getAll(param: any): Promise<{
+        products: import("./entities/product.entity").Product[];
+        quantityProduct: number;
+    }>;
 }

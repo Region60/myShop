@@ -1,5 +1,7 @@
 export const Constants = {
-localhost : 'http://back' ,
-portBackend : ':8080',
-portFrontend : '3001',
-}
+    localhostBack : process.env.BACK_HOST as string,
+    portFrontend : '3001',
+    }
+    
+    const environment = process.env.BACK_HOST
+    
