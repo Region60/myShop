@@ -17,16 +17,19 @@ const responseProduct = {
     {"id":10,"nameProduct":"Galaxy S8 Plus","descriptionProduct":"Samsung","price":134,"quantity":5,"photoProduct":"http:\\\\photo.jpeg"},
     {"id":11,"nameProduct":"Galaxy S8 Plus","descriptionProduct":"Samsung","price":134,"quantity":5,"photoProduct":"http:\\\\photo.jpeg"},
 ], quantityProduct:11}
-export const loadProduct = (count: number = 20, page: number = 1) => {
-    const fetchLoadString = `${endpoints.fetchProduct}/${count}/${page}`
-    console.log(fetchLoadString)
+const countForPage = 20
+const defaultStartPAge = 1
+
+export const loadProduct = (count: number = countForPage, page: number = defaultStartPAge) => {
+    //const fetchLoadString = `${endpoints.fetchProduct}/${count}/${page}`
+    const fetchLoadString = `${'http://localhost:8080/product'}/${count}/${page}`
     return async (dispatch: Dispatch<CatalaogAction>)=>{
         try {
-            const response = axios.get(endpoints.fetchProduct)
-        //const response = axios.get('https://0c56fd50-e225-4c72-9deb-0afcf3621bce.mock.pstmn.io/products/3/1')
-        return  dispatch({type: CatalogActionType.FETCH_PRODUCT, payload: responseProduct})
-        console.log({responsse:(await response).data})
-        //return  dispatch({type: CatalogActionType.FETCH_PRODUCT, payload: (await response).data})
+            console.log({fetchLoadString})
+            const response = axios.get(fetchLoadString)
+            console.log({response:(await response).data})
+        //return  dispatch({type: CatalogActionType.FETCH_PRODUCT, payload: responseProduct})
+        return  dispatch({type: CatalogActionType.FETCH_PRODUCT, payload: (await response).data})
         } catch (error) {
             dispatch({type: CatalogActionType.FETCH_PRODUCT_ERROR, payload:'ошибка загрузки товаров c сервера' })
         }

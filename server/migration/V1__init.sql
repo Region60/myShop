@@ -45,8 +45,13 @@ CREATE TABLE IF NOT EXISTS orderProduct (
 
 INSERT INTO product  ("nameProduct", "descriptionProduct", "photoProduct", price, quantity)
 VALUES
-('iPhone 6', 'Apple', 'http:\\photo.jpeg', 312, 3),
+('IPhone 6', 'Apple', 'http:\\photo.jpeg', 312, 3),
 ('Galaxy S8', 'Samsung', 'http:\\photo.jpeg', 2343, 4),
 ('Galaxy S8 Plus', 'Samsung', 'http:\\photo.jpeg', 134, 5);
+('N8', 'Nokia', 'http:\\photo.jpeg', 1324, 12);
+('380', 'Motorola', 'http:\\photo.jpeg', 112, 1);
+('Razer', 'Motorola', 'http:\\photo.jpeg', 18234, 12);
+('Iphone 8', 'Фззду', 'http:\\photo.jpeg', 11237, );
+('Readmy 12C', 'Xiaomi', 'http:\\photo.jpeg', 1189, 3);
 
 

@@ -47,9 +47,8 @@ const Products = ()=> {
 export default Products
 
 export const getServerSideProps = wrapper.getServerSideProps( store => async ({req, res, ...etc}) => {
-    console.log('>>>>>>>>>>>getServerSideProps')
-    console.log (etc)
-    console.log('>>>>>>>>>>>getServerSideProps')
-    await store.dispatch(await loadProduct())
+    const page  = etc.page
+    const{quantityProductForPage} = store.getState()
+    await store.dispatch(await loadProduct(quantityProductForPage, page))
   });
 

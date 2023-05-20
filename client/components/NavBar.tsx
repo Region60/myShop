@@ -15,7 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useRouter } from 'next/router';
 
 const pages = [
-    {text:'Каталог',href:'/products'},
+    {text:'Каталог',href:'/products/1'},
     {text: 'Контакты', href: '/contacts'} ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function ResponsiveAppBar() {
