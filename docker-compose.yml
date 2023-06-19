@@ -65,7 +65,7 @@ services:
     image: flyway/flyway
     command: -url=jdbc:postgresql://db:5432/test -user=user01 -password=qwertyui -connectRetries=60 migrate
     volumes:
-      - /home/maximkotov1986/my_shop:/flyway/sql
+      - /home/maks/my_project/myShop/server:/flyway/sql
     depends_on:
       - db
       - back   

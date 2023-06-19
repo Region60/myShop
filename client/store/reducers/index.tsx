@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 import {catalogReducer} from './catalogReducer'
 import { HYDRATE } from "next-redux-wrapper";
+import { authReducer } from "./authReducer";
 
 export const rootReducer= combineReducers({
-    catalog: catalogReducer
+    catalog: catalogReducer,
+    auth: authReducer
 })
 
 export const reducer = (state: any, action: any) => {

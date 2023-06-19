@@ -4,7 +4,7 @@ export interface CatalogState {
 products: IProduct []
 quantityProduct: number
 quantityProductForPage: number
-error: string | undefined
+error?: string
 }
 
 export enum CatalogActionType {

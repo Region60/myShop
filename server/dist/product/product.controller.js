@@ -37,7 +37,6 @@ let ProductController = class ProductController {
     async getAll(param) {
         console.log(">>>>>>> product GET_ALL <<<<<<<<");
         const response = await this.productService.getAll(+param.page, +param.count);
-        console.log(response);
         return response;
     }
 };

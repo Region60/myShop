@@ -7,6 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.useGlobalPipes(new ValidationPipe());
+  app.enableCors( )
   console.log('создать файл constans с константами провайдеров');
   console.log('прописать в openapi, че возвращают');
   console.log('реализовать создание удаление проектов');
@@ -21,6 +22,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(process.env.NODE_ENV==="production"? process.env.PORT : 8080);
+  await app.listen(process.env.NODE_ENV==="production"? process.env.PORT : 5000);
 }
 bootstrap();

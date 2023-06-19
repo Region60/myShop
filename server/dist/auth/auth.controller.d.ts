@@ -4,6 +4,7 @@ export declare class AuthController {
     constructor(authService: AuthService);
     login(req: any): Promise<{
         access_token: string;
+        userName: any;
     }>;
     confirmReg(param: any): Promise<void>;
 }
