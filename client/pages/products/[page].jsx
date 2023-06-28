@@ -48,7 +48,7 @@ const Products = () => {
     </>
   )
 }
-
+  
 export default Products
 
 export const getServerSideProps = wrapper.getServerSideProps(

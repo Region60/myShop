@@ -1,23 +1,34 @@
 import endpoints from "@/constants/endpoints"
 import { useInput } from "@/hooks/useInput"
-import { useLocalStorage } from "@/hooks/useLocalStorage"
 import MainLayout from "@/layouts/MainLayout"
-import { auth } from "@/store/actions-creators/auth"
+import { LocalStorageConstantsType } from "@/types/auth"
 import { Button, TextField, Link } from "@mui/material"
-//import Link from "next/link"
-import { useRouter } from "next/router"
-import { useDispatch } from "react-redux"
+import axios from "axios"
 import "tailwindcss/tailwind.css"
 
 const Auth = () => {
   const email = useInput("")
   const password = useInput("")
-  const router = useRouter()
-  //const dispatch = useDispatch()
 
-  const login = () => {
-     //dispatch(auth(email.value, password.value))
-    //router.push("/")
+  const login = async () => {
+    try {
+      const response = axios.post(endpoints.login, {
+        email: email.value,
+        password: password.value,
+      })
+      const responseData = (await response).data
+      console.log(responseData)
+      window.localStorage.setItem(
+        LocalStorageConstantsType.JWT,
+        responseData.access_token
+      )
+      window.localStorage.setItem(
+        LocalStorageConstantsType.USER_IS_AUTH,
+        responseData.userName
+      )
+    } catch (error) {
+      console.log({ error })
+    }
   }
 
   return (

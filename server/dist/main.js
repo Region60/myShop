@@ -8,10 +8,6 @@ async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.useGlobalPipes(new common_1.ValidationPipe());
     app.enableCors();
-    console.log('создать файл constans с константами провайдеров');
-    console.log('прописать в openapi, че возвращают');
-    console.log('реализовать создание удаление проектов');
-    console.log('вынести в common общие ДТО и интерфейсы');
     const config = new swagger_1.DocumentBuilder()
         .setTitle('My FOREST')
         .setDescription('The TEST API description')
@@ -20,7 +16,7 @@ async function bootstrap() {
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('api', app, document);
-    await app.listen(process.env.NODE_ENV === "production" ? process.env.PORT : 5000);
+    await app.listen(process.env.NODE_ENV === 'production' ? process.env.PORT : 5000);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

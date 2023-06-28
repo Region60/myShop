@@ -2,17 +2,17 @@ import { IsAuthActionType, AuthActionType } from "../../types/auth"
 import { Dispatch } from "react"
 import axios from "axios"
 import endpoints from "../../constants/endpoints"
-import { useLocalStorage } from "@/hooks/useLocalStorage"
 
-export const auth = (email: string, password: string) => {
-  console.log({email,password})
+export const login = (email: string, password: string) => {
+  console.log({ email, password })
 
   return async (dispatch: Dispatch<IsAuthActionType>) => {
     try {
       const response = axios.post(endpoints.login, { email, password })
       const responseData = (await response).data
-      useLocalStorage("jwt", responseData.access_token)
-        return dispatch({
+      localStorage.setItem("jwt", responseData.access_token)
+      localStorage.setItem("user",responseData.userName )    
+       dispatch({
         type: AuthActionType.IS_AUTH,
         payload: responseData,
       })
@@ -25,3 +25,4 @@ export const auth = (email: string, password: string) => {
     }
   }
 }
+

@@ -100,7 +100,6 @@ const defaultStartPAge = 1
 
 export const loadProduct = (count: number, page: number = defaultStartPAge) => {
   const fetchLoadString = `${endpoints.fetchProduct}${count}/${page}`
-  console.log({fetchLoadString, count})
   return async (dispatch: Dispatch<CatalaogAction>) => {
     try {
       const response = axios.get(fetchLoadString)

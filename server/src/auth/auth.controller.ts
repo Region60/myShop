@@ -11,6 +11,7 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
   async login(@Request() req) {
+    console.log("backEnd queery LOGIN")
     return await this.authService.login(req.user);
   }
 

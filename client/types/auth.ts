@@ -4,6 +4,11 @@ export interface AuthState {
   error?: string
 }
 
+export enum LocalStorageConstantsType {
+  JWT = "JWT",
+  USER_IS_AUTH = "USER_IS_AUTH"
+}
+
 export enum AuthActionType {
   IS_AUTH = "IS_AUTH",
   FETCH_AUTH_ERROR = "FETCH_AUTH_ERROR"
