@@ -1,15 +1,20 @@
 import React from "react"
 import MainLayout from "../../layouts/MainLayout"
-import { Grid, Card, Button, Box } from "@mui/material"
+import { Grid, Card, Button, Box, TextField } from "@mui/material"
 import { useRouter } from "next/router"
 import Catalog from "../../components/Catalog"
 import { useTypeSelector } from "../../hooks/useTypeSelector"
 import { wrapper } from "../../store"
 import { loadProduct } from "../../store/actions-creators/catalog"
 import "tailwindcss/tailwind.css"
+import { useInput } from "@/hooks/useInput"
+import SelectComponent from "@/components/Select"
+
+const selectComponentItems = [1, 2, 3, 4, 5]
 
 const Products = () => {
   const router = useRouter()
+
   const { quantityProductForPage, quantityProduct, products, error } =
     useTypeSelector((state) => state.catalog)
   console.log("rendering page>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
@@ -25,8 +30,15 @@ const Products = () => {
   return (
     <>
       <MainLayout>
+      <Box>Количество продуктов {quantityProduct}</Box>
+
         <Grid container justifyContent="center" className="m-4">
-          <h3>Количество продуктов {quantityProduct}</h3>
+          <Grid container width={"50%"}>
+            <Grid> показывать на странице</Grid>
+            <Grid>
+              <SelectComponent selectComponentItems={selectComponentItems} />
+            </Grid>
+          </Grid>
         </Grid>
         <Grid container justifyContent="center" className="m-4">
           <Card style={{ width: 900 }}>
@@ -48,7 +60,7 @@ const Products = () => {
     </>
   )
 }
-  
+
 export default Products
 
 export const getServerSideProps = wrapper.getServerSideProps(

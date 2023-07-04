@@ -1,16 +1,15 @@
-import 'tailwindcss/tailwind.css'
-import React from 'react'
-import MainLayout from '../layouts/MainLayout'
+import "tailwindcss/tailwind.css"
+import React from "react"
+import MainLayout from "../layouts/MainLayout"
 
-const  Home: React.FC =()=> {
+const Home: React.FC = () => {
   return (
-    <div>
-        <MainLayout>
-        </MainLayout>        
-    </div>
-    
+    <>
+      <div className="h-screen">
+        <MainLayout></MainLayout>
+      </div>
+    </>
   )
 }
-
 
 export default Home

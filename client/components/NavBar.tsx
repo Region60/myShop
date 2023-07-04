@@ -11,23 +11,20 @@ import Button from "@mui/material/Button"
 import MenuItem from "@mui/material/MenuItem"
 import AdbIcon from "@mui/icons-material/Adb"
 import { useRouter } from "next/router"
-import { useGetUserStatus } from "@/hooks/useGetStatus"
 import Link from "next/link"
+import { LocalStorageConstantsType } from "@/types/auth"
+import useIsAuth from "@/hooks/useIsAuth"
 
 const pages = [
   { text: "Каталог", href: "/products/1" },
   { text: "Контакты", href: "/contacts" },
 ]
-const settings = [
-  { itemName: "Profile", href: "/profile" },
-  { itemName: "Войти", href: "/auth" },
-]
+
 function ResponsiveAppBar() {
-  const isAuth = useGetUserStatus()
+  const [user,setUser] = useIsAuth()
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
 
   const router = useRouter()
-
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget)
   }
@@ -36,10 +33,11 @@ function ResponsiveAppBar() {
     setAnchorElNav(null)
   }
 
-  React.useEffect(()=>{
-    localStorage.getItem("user")
-  
-  })
+  const logOut = () => {
+      localStorage.removeItem(LocalStorageConstantsType.JWT)
+      localStorage.removeItem(LocalStorageConstantsType.USER_IS_AUTH)
+      setUser("")
+  }
 
   return (
     <AppBar position="static">
@@ -134,11 +132,20 @@ function ResponsiveAppBar() {
               >
                 {text}
               </Button>
-            ))}
+            ))} 
           </Box>
+          <Link href={"/profile"}>
+          <div className="mr-4">{user ? `Привет ${user} ` : ""}</div>
+          </Link>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Link href={"/auth"}>{!isAuth?"Войти" :"Выйти"}</Link>
+            {!user ? (
+              <Link href={"/auth"}>Войти</Link>
+            ) : (
+              <Link href={"/"} onClick={logOut}>
+                Выйти
+              </Link>
+            )}
           </Box>
         </Toolbar>
       </Container>
