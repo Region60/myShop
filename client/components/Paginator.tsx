@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 import Pagination from "@mui/material/Pagination"
 import Stack from "@mui/material/Stack"
-import IProduct from "../types/product"
-import { AnyIfEmpty } from "react-redux"
+
 import { useRouter } from "next/router"
 
 interface IPaginatorProps {
@@ -19,7 +18,7 @@ const PaginationRanges: React.FC<IPaginatorProps> = ({
   let pagesCount = Math.ceil(quantityProduct / quantityProductForPage)
 
   function jump(page: string) {
-    router.push(`/products/${page}`)
+    router.push(`/products/${page}/${quantityProductForPage}`)
   }
 
   const handleChange = (e: any, p: any) => {

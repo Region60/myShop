@@ -23,6 +23,7 @@ let ProductController = class ProductController {
         this.productService = productService;
     }
     async create(createProductDto) {
+        console.log(">>>>>>> product_POST <<<<<<<<");
         return await this.productService.create(createProductDto);
     }
     async patch(updateProductDto, productId) {

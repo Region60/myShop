@@ -14,6 +14,7 @@ const auth_module_1 = require("./auth/auth.module");
 const mail_module_1 = require("./mail/mail.module");
 const config_1 = require("@nestjs/config");
 const product_module_1 = require("./product/product.module");
+const cart_module_1 = require("./cart/cart.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -25,6 +26,7 @@ AppModule = __decorate([
             mail_module_1.MailModule,
             product_module_1.ProductModule,
             config_1.ConfigModule.forRoot({ isGlobal: true }),
+            cart_module_1.CartModule,
         ],
     })
 ], AppModule);

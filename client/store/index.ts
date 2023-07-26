@@ -1,4 +1,4 @@
-import {createStore, applyMiddleware, AnyAction, Store} from 'redux';
+import {legacy_createStore as createStore, applyMiddleware, AnyAction, Store} from 'redux';
 import {createWrapper, Context,} from 'next-redux-wrapper';
 import { RootState, reducer } from './reducers';
 import thunk, { ThunkDispatch } from 'redux-thunk'

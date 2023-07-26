@@ -7,8 +7,8 @@ import { useTypeSelector } from "../../hooks/useTypeSelector"
 import { wrapper } from "../../store"
 import { loadProduct } from "../../store/actions-creators/catalog"
 import "tailwindcss/tailwind.css"
-import { useInput } from "@/hooks/useInput"
 import SelectComponent from "@/components/Select"
+import { CatalogActionType } from "@/types/catalog"
 
 const selectComponentItems = [1, 2, 3, 4, 5]
 
@@ -17,7 +17,15 @@ const Products = () => {
 
   const { quantityProductForPage, quantityProduct, products, error } =
     useTypeSelector((state) => state.catalog)
-  console.log("rendering page>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+  console.log("rendering ProductPage>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+  console.log({ products })
+  console.log({ quantityProduct })
+  console.log({ products })
+  console.log({ quantityProductForPage })
+
+  const setQuantityPage = async (numberPage) => {
+        router.push(`/products/1/${numberPage}`)
+  }
 
   if (error) {
     return (
@@ -30,13 +38,18 @@ const Products = () => {
   return (
     <>
       <MainLayout>
-      <Box>Количество продуктов {quantityProduct}</Box>
-
+        <Box>Количество продуктов {quantityProduct}</Box>
         <Grid container justifyContent="center" className="m-4">
-          <Grid container width={"50%"}>
-            <Grid> показывать на странице</Grid>
-            <Grid>
-              <SelectComponent selectComponentItems={selectComponentItems} />
+          <Grid container width={"50%"} marginLeft={"auto"}>
+            <Grid item fontSize={"1.5rem"} paddingTop={"1rem"}>
+              показывать на странице
+            </Grid>
+            <Grid item>
+              <SelectComponent
+                callback={setQuantityPage}
+                selectComponentItems={selectComponentItems}
+                quantityProductForPage={quantityProductForPage}
+              />
             </Grid>
           </Grid>
         </Grid>
@@ -67,9 +80,16 @@ export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
     async ({ req, res, ...etc }) => {
       const page = etc.params.page
+      console.log({paramsPAge: etc.params})
+
 
       const { quantityProductForPage } = store.getState().catalog
-
-      await store.dispatch(await loadProduct(quantityProductForPage, page))
+      console.log('>>>>>>>>>SERVER PROPS<<<<<<<<<<')
+      console.log({ serverProps: quantityProductForPage })
+      await store.dispatch({
+        type: CatalogActionType.SET_QUANTITY_PRODUCT,
+        payload: page[1],
+      })
+      await store.dispatch(await loadProduct(+page[1], page[0]))
     }
 )

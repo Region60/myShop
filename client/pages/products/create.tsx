@@ -13,23 +13,33 @@ const CreateProduct: React.FC = () => {
   const [picture, setPicture] = useState(null)
   const router = useRouter()
 
-  const name = useInput("")
-  const quantities = useInput("")
+  const nameProduct = useInput("")
+  const quantity = useInput("")
   const price = useInput("")
-  const description = useInput("")
+  const descriptionProduct = useInput("")
 
   const next = () => {
     if (activeStep !== 1) {
       setActiveStep((prev) => prev + 1)
     } else {
-      const formData = new FormData()
-      formData.append("name", name.value)
-      formData.append("quantities", quantities.value)
-      formData.append("name", price.value)
-      formData.append("description", description.value) // картинки formData.append('picture', picture) без велью
+      // const formData = new FormData()
+      // formData.append("nameProduct", nameProduct.value)
+      // formData.append("quantity", quantity.value)
+      // formData.append("price",  price.value)
+      // formData.append("descriptionProduct", descriptionProduct.value)
+      // formData.append("photoProduct", 'http://img.jpeg')
+      // картинки formData.append('picture', picture) без велью
+      const product = {
+        nameProduct: nameProduct.value,
+        quantity: +quantity.value,
+        price: +price.value,
+        descriptionProduct: descriptionProduct.value,
+        photoProduct: "http://img.jpeg",
+      }
+      //const string = endpoints.fetchProduct
       axios
-        .post(endpoints.fetchProduct, formData)
-        .then((resp) => router.push("/product"))
+        .post(endpoints.loadProduct, product)
+        .then((resp) => router.push("/"))
         .catch((e) => console.log(e))
     }
   }
@@ -46,12 +56,12 @@ const CreateProduct: React.FC = () => {
           {activeStep === 0 && (
             <Grid container direction="column" style={{ padding: 20 }}>
               <TextField
-                {...name}
+                {...nameProduct}
                 style={{ marginTop: 10 }}
                 label="Наименование"
               ></TextField>
               <TextField
-                {...quantities}
+                {...quantity}
                 style={{ marginTop: 10 }}
                 label="Количество"
               ></TextField>
@@ -61,7 +71,7 @@ const CreateProduct: React.FC = () => {
                 label="Цена"
               ></TextField>
               <TextField
-                {...description}
+                {...descriptionProduct}
                 style={{ marginTop: 10 }}
                 label="Описание"
                 multiline
@@ -72,7 +82,7 @@ const CreateProduct: React.FC = () => {
           {activeStep === 1 && (
             <h1>
               <FileUpload setFile={setPicture} accept="image/*">
-                <Button>Загрузить</Button>
+                <Button>Загрузить Фото</Button>
               </FileUpload>
             </h1>
           )}

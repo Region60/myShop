@@ -1,5 +1,6 @@
-import { IsString } from 'class-validator'
+import { IsNumber, IsString } from 'class-validator'
 import { ApiProperty } from '@nestjs/swagger';
+import { IsNull } from 'typeorm';
 
 export class CreateProductDto {
     @IsString()
@@ -10,11 +11,11 @@ export class CreateProductDto {
     @ApiProperty()
     descriptionProduct: string
 
-    @IsString()
+    @IsNumber()
     @ApiProperty()
     price: number
 
-    @IsString()
+    @IsNumber()
     @ApiProperty()
     quantity: number
 

@@ -7,7 +7,7 @@ import {
 const initialSatte: CatalogState = {
   products: [],
   quantityProduct: 0,
-  quantityProductForPage: 3,
+  quantityProductForPage: 1,
   error: "",
 }
 
@@ -23,7 +23,11 @@ export const catalogReducer = (
         quantityProduct: action.payload.quantityProduct,
       }
     case CatalogActionType.FETCH_PRODUCT_ERROR:
-      return { ...state, error: action.payload }
+      return { ...state, error: action.payload 
+      }
+    case CatalogActionType.SET_QUANTITY_PRODUCT:
+      return {...state, quantityProductForPage: action.payload
+      }
 
     default:
       return state

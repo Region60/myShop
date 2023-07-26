@@ -6,25 +6,33 @@ import Select, { SelectChangeEvent } from "@mui/material/Select"
 
 interface SelectComponentsProps {
   selectComponentItems: number[]
+  callback: Function
+  quantityProductForPage:number
 }
 
 export default function SelectComponent({
   selectComponentItems,
+  callback,
+  quantityProductForPage
 }: SelectComponentsProps) {
-  const [value, setValue] = React.useState("")
+  const [value, setValue] = React.useState(String(quantityProductForPage))
 
   const handleChange = (event: SelectChangeEvent) => {
     setValue(event.target.value)
+    callback(event.target.value)
+
   }
 
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth:70 }}>
+      <FormControl sx={{ m: 1, minWidth: 70 }}>
         <InputLabel id="demo-simple-select-autowidth-label"></InputLabel>
         <Select value={value} onChange={handleChange} autoWidth>
           <MenuItem value=""></MenuItem>
           {selectComponentItems.map((i, ind) => (
-            <MenuItem value={i}>{i}</MenuItem>
+            <MenuItem key={ind} value={i}>
+              {i}
+            </MenuItem>
           ))}
         </Select>
       </FormControl>

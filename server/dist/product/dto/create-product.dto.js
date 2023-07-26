@@ -25,12 +25,12 @@ __decorate([
     __metadata("design:type", String)
 ], CreateProductDto.prototype, "descriptionProduct", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNumber)(),
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", Number)
 ], CreateProductDto.prototype, "price", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNumber)(),
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", Number)
 ], CreateProductDto.prototype, "quantity", void 0);

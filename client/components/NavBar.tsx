@@ -16,11 +16,12 @@ import { LocalStorageConstantsType } from "@/types/auth"
 import useIsAuth from "@/hooks/useIsAuth"
 
 const pages = [
-  { text: "Каталог", href: "/products/1" },
+  { text: "Каталог", href: "/products/1/4" },
   { text: "Контакты", href: "/contacts" },
 ]
 
 function ResponsiveAppBar() {
+
   const [user,setUser] = useIsAuth()
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
 
@@ -96,7 +97,7 @@ function ResponsiveAppBar() {
                   <Typography
                     onClick={() => router.push(href)}
                     textAlign="center"
-                  >
+                  >``  
                     {text}
                   </Typography>
                 </MenuItem>

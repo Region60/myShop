@@ -25,7 +25,7 @@ const Register: React.FC = () => {
       confirmRegister: "",
     }
     axios
-      .post(endpoints.register,formData)
+      .post('http://localhost:5000/users',formData)
       .then((resp) => router.push("/register/registerSucess"))
       .catch((e) => console.log(e))
   }
